@@ -122,6 +122,19 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  isUserHavePlan: {
+    type: Boolean,
+    default: false,
+  },
+  currentPlan: {
+    type: String,
+    enum: ["basic", "premium", "pro", null],
+    default: null,
+  },
+  planExpiryDate: {
+    type: Date,
+    default: null,
+  },
 
 }, { timestamps: true })
 

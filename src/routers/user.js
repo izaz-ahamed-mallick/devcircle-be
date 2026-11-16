@@ -74,6 +74,8 @@ userRouter.get(
         "age",
         "location",
         "linkedinUrl",
+        "currentPlan",
+        "isUserHavePlan"
       ]);
       const data = requests.map((request) => ({
         requestId: request._id,
@@ -182,11 +184,10 @@ userRouter.get("/user/feed", userAuth, async (req, res) => {
     })
     const profileFeed = await User.find({
       _id: { $nin: Array.from(hideUser) }
-    }).select("firstName lastName age gender about skills photoUrl location githubUrl linkedinUrl")
+    }).select("firstName lastName age gender about skills photoUrl location githubUrl linkedinUrl isUserHavePlan currentPlan")
       .skip(skip)
       .limit(limit)
 
-console.log(connection)
     return sendResponse(
       res,
       200,
